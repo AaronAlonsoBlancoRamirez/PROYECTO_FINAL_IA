@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Sentimiento del Producto</title>
+    <style>
+        /* Base estilos generales para la página */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica', sans-serif;
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .product-image {
+            width: 80%;
+            max-width: 500px;
+            margin: 1rem auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin: 1rem 0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin: 2rem 0;
+            background: rgba(0, 123, 255, 0.1);
+            border-left: 4px solid #007bff;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .result h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #007bff;
+        }
+
+        .result p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .product-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1rem;
+            margin: 2rem auto;
+        }
+
+        .product-selection img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .product-selection img:hover {
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Análisis de Sentimiento del Producto</h1>
+
+        <!-- Mostrar una imagen aleatoria de producto -->
+        <img id="random-image" src="" alt="Imagen del Producto" class="product-image">
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="comment">Escribe una reseña del producto:</label>
+                <input type="text" id="comment" name="comment" placeholder="Escribe tu reseña aquí..." required>
+            </div>
+            <input type="submit" value="Enviar">
+        </form>
+
+        <!-- Mostrar el sentimiento enviado -->
+        {% if result %}
+            <div class="result">
+                <h3>Enviaste un sentimiento: {{ result['label'] }}</h3>
+                <p>Probabilidad de ser negativo: {{ result['prob_negativo'] }}</p>
+                <p>Probabilidad de ser positivo: {{ result['prob_positivo'] }}</p>
+            </div>
+        {% endif %}
+
+        <div id="product-selection" class="product-selection">
+            <img src="static/images/fitbit.jpg" alt="Fitbit">
+            <img src="static/images/gopro.jpg" alt="GoPro">
+            <img src="static/images/instax.jpg" alt="Instax">
+            <img src="static/images/macbook.jpg" alt="MacBook">
+            <img src="static/images/nike.jpg" alt="Nike">
+            <img src="static/images/roku.jpg" alt="Roku">
+            <img src="static/images/s21.jpg" alt="Samsung Galaxy S21">
+            <img src="static/images/sony.jpg" alt="Sony WH-1000XM4">
+            <img src="static/images/tabs7.jpg" alt="Samsung Galaxy Tab S7">
+            <img src="static/images/canon.jpg" alt="Canon EOS R">
+            <img src="static/images/iphone13.jpg" alt="iPhone 13">
+            <img src="static/images/lg.jpg" alt="LG OLED55CXPUA TV">
+            <img src="static/images/olla.jpg" alt="Instant Pot Duo">
+        </div>
+
+    </div>
+
+    <script>
+        // Cargar una imagen aleatoria cada vez que se recargue la página
+        const productImages = [
+            'static/images/fitbit.jpg',
+            'static/images/gopro.jpg',
+            'static/images/instax.jpg',
+            'static/images/macbook.jpg',
+            'static/images/nike.jpg',
+            'static/images/roku.jpg',
+            'static/images/s21.jpg',
+            'static/images/sony.jpg',
+            'static/images/tabs7.jpg',
+            'static/images/canon.jpg',
+            'static/images/iphone13.jpg',
+            'static/images/lg.jpg',
+            'static/images/olla.jpg'
+        ];
+        document.getElementById('random-image').src = productImages[Math.floor(Math.random() * productImages.length)];
+    </script>
+</body>
+</html>
