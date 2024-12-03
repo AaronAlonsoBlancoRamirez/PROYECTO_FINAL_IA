@@ -13,6 +13,20 @@ Este proyecto incluye:
 - Predicción de sentimientos usando el modelo entrenado.
 - Una interfaz web para ingresar texto y obtener resultados de análisis.
 > **Nota:** La carpeta `results` se enviará comprimida en formato `.rar`. Es necesario descomprimirla antes de ejecutar el proyecto. Asegúrate de que los archivos contenidos en `results` estén en la ubicación correcta tras la extracción.
+---
+
+## Nota Importante
+
+La carpeta `results/` es muy pesada para ser incluida directamente en el repositorio. Por esta razón, debe descargarse manualmente desde el siguiente enlace:
+
+**[Descargar carpeta `results`](https://drive.google.com/drive/folders/1Rm_xkJtGDnI0rEcEuSbxFKrF-hZ8sRh3?usp=sharing)**
+
+Una vez descargada, sigue estos pasos:
+
+1. Descomprime la carpeta.
+2. Copia la carpeta descomprimida `results/` en el directorio raíz del proyecto.
+
+> Asegúrate de que todos los archivos dentro de `results/` estén correctamente ubicados para que el proyecto funcione sin problemas.
 
 ---
 
